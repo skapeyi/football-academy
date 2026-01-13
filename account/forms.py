@@ -117,18 +117,22 @@ class RegisterForm(forms.Form):
 class PlayerForm(forms.ModelForm):
     class Meta:
         models = Player
+        fields = '__all__'
 
 
 class UserPlayerForm(forms.ModelForm):
     class Meta:
         model = UserPlayer
+        fields = '__all__'
 
 
 class PlayScheduleForm(forms.ModelForm):
     class Meta:
         model = PlaySchedule
+        fields = '__all__'
 
 
 class PlayerAttendanceForm(forms.ModelForm):
     class Meta:
         model = PlayerAttendance
+        fields = '__all__'
