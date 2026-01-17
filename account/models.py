@@ -83,8 +83,9 @@ class UserPlayer(AuditableModel):
   
 class PlaySchedule(AuditableModel):
     venue = models.CharField(max_length=255)
-    start_time = models.DateTimeField()
-    end_time = models.DateField()
+    date = models.DateField(auto_now=False, null=True)
+    start_time = models.TimeField()
+    end_time = models.TimeField()
     description = models.TextField()     
 
 

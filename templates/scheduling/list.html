@@ -2,7 +2,14 @@
 
 {% block content %}
 <div class="card">
-    <div class="card-header">Training scheduling</div>
+    <div class="card-header">
+        <div class="d-flex">Training scheduling</div>
+        <div class="d-flex">
+            <button class="btn btn-sm btn-secondary" id="assign-organization-btn" data-bs-toggle="modal" data-bs-target="#addSheduling">
+                Add scheduling
+          </button>
+        </div>
+    </div>
     <div class="card-body">
         <!-- tab div -->
         <div>
@@ -29,6 +36,7 @@
                         <thead>
                             <tr>
                                 <th>Venue</th>
+                                <th>Date</th>
                                 <th>Start Time</th>
                                 <th>End time</th>
                                 <th>Description</th>
@@ -39,6 +47,7 @@
                             {% for item in upcoming %}
                             <tr>
                                 <td>{{ item.venue }}</td>
+                                <td>{{ item.date }}</td>
                                 <td>{{ item.start_time }}</td>
                                 <td>{{ item.end_time }}</td>
                                 <td>{{ item.description }}</td>
@@ -83,5 +92,6 @@
         </div>
     </div>
 
+    {% include 'scheduling/create-modal.html' %}
 
     {% endblock %}

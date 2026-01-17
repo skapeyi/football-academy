@@ -129,7 +129,17 @@ class UserPlayerForm(forms.ModelForm):
 class PlayScheduleForm(forms.ModelForm):
     class Meta:
         model = PlaySchedule
-        fields = '__all__'
+        fields = [
+            'venue','date', 'start_time', 'end_time', 'description'
+        ]
+        widgets = {
+            'venue': forms.TextInput(attrs={'class': 'form-control'}),
+            'date': forms.DateInput(attrs={'class': 'form-control', 'type':'date'}),
+            'start_time': forms.DateTimeInput(attrs={'class': 'form-control', 'type':'time'}),
+            'end_time': forms.DateTimeInput(attrs={'class': 'form-control', 'type':'time'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+
+        }
 
 
 class PlayerAttendanceForm(forms.ModelForm):

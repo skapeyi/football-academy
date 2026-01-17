@@ -1,10 +1,12 @@
 from django.shortcuts import render
+from django.urls import reverse
 from .models import PlaySchedule, Player, User
 from django.shortcuts import render, redirect
 from django.views import View
+from django.views.generic import CreateView
 from django.contrib.auth import authenticate, login, logout
 
-from .forms import LoginForm, PlayerForm, RegisterForm
+from .forms import LoginForm, PlayScheduleForm, PlayerForm, RegisterForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
@@ -87,12 +89,29 @@ class ListPlaySchedule(LoginRequiredMixin, View):
     def get(self, request):
         past = PlaySchedule.objects.all()
         upcoming = PlaySchedule.objects.all()
+        form = PlayScheduleForm()
         
         context = {
             'past': past,
-            'upcoming': upcoming
+            'upcoming': upcoming,
+            'form': form
         }
         return render(request, 'scheduling/list.html', context)
+
+class CreatePlaySchedule(LoginRequiredMixin, CreateView):
+    model = PlaySchedule
+    form_class = PlayScheduleForm
+    
+    def form_valid(self, form):
+        schedule = form.save(commit=True)
+        return super().form_valid(form)
+    
+    def form_invalid(self, form):
+        pass
+    
+    def get_success_url(self):
+         return reverse('account:scheduling')
+    
 
 # Users
 class UserListView(LoginRequiredMixin, View):

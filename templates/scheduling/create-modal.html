@@ -1,0 +1,16 @@
+<div class="modal fade" id="addSheduling" tabindex="-1" aria-labelledby="addSchedulingModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-secondary text-white">
+                <h5>Add schedule</h5>
+            </div>
+            <div class="modal-body">
+                <form method="post"  action="{% url 'account:scheduling-create'%}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary w-100">Create play schedule</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
