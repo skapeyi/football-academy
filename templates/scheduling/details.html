@@ -13,6 +13,35 @@
         Attedance List
     </div>
 
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped"> 
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Position</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entry in attendees %}
+                        <tr>
+                            <td>{{ entry.player.first_name }}</td>
+                            <td>{{ entry.player.last_name }}</td>
+                            <td>{{ entry.player.position }}</td>
+                            <td>
+            
+                                <a href="">Comfirm attendance</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+
 </div>
 
 

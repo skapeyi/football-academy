@@ -143,10 +143,12 @@ class CreatePlaySchedule(LoginRequiredMixin, CreateView):
 class DetailPlaySchedule(LoginRequiredMixin, View):
     def get(self, request, pk):
         schedule = get_object_or_404(PlaySchedule,  pk=pk)
-       
+        attendees = PlayerAttendance.objects.filter(
+            schedule = schedule
+        )
         context = {
             'schedule': schedule,
-           
+            'attendees': attendees
         }
         return render(request, 'scheduling/details.html', context)
 
