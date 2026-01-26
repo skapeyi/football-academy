@@ -1,6 +1,85 @@
 {% extends "base.html" %}
 
+{% block title %}Dashboard - Milos Academy{% endblock %}
+
 {% block content %}
-    <!-- <h1>Welcome, {{ user.email }}!</h1> -->
-    
+<div class="page-header mb-4">
+    <h1 class="page-title">Welcome back!</h1>
+    <p class="page-subtitle">Here's an overview of your academy</p>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <div class="stat-label">Total Players</div>
+                    <div class="stat-value">--</div>
+                </div>
+                <i class="bi bi-people-fill" style="font-size: 2.5rem; opacity: 0.3;"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="stat-card accent">
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <div class="stat-label">Upcoming Sessions</div>
+                    <div class="stat-value">--</div>
+                </div>
+                <i class="bi bi-calendar-check" style="font-size: 2.5rem; opacity: 0.3;"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="stat-card warning">
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <div class="stat-label">Parents/Caretakers</div>
+                    <div class="stat-value">--</div>
+                </div>
+                <i class="bi bi-person-badge" style="font-size: 2.5rem; opacity: 0.3;"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-6">
+        <div class="card h-100">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span>Quick Actions</span>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <a href="{% url 'account:players' %}" class="btn btn-outline-primary d-flex align-items-center justify-content-between">
+                        <span><i class="bi bi-people-fill me-2"></i>Manage Players</span>
+                        <i class="bi bi-chevron-right"></i>
+                    </a>
+                    <a href="{% url 'account:scheduling' %}" class="btn btn-outline-primary d-flex align-items-center justify-content-between">
+                        <span><i class="bi bi-calendar3 me-2"></i>View Schedule</span>
+                        <i class="bi bi-chevron-right"></i>
+                    </a>
+                    <a href="{% url 'account:care-takers' %}" class="btn btn-outline-primary d-flex align-items-center justify-content-between">
+                        <span><i class="bi bi-person-badge me-2"></i>View Parents/Caretakers</span>
+                        <i class="bi bi-chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card h-100">
+            <div class="card-header">
+                <span>Recent Activity</span>
+            </div>
+            <div class="card-body">
+                <div class="empty-state">
+                    <i class="bi bi-clock-history d-block"></i>
+                    <p class="mb-0">No recent activity to display</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

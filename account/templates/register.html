@@ -1,18 +1,27 @@
-{% extends "base.html" %} {% block content %}
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card mt-5">
-        <div class="card-header bg-primary text-white">Register</div>
-        <div class="card-body">
-          <form method="post">
-            {% csrf_token %} {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Register</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+{% extends "base-auth.html" %}
 
+{% block title %}Register - Milos Academy{% endblock %}
+
+{% block content %}
+<div class="auth-card">
+    <div class="auth-header">
+        <i class="bi bi-trophy-fill"></i>
+        <h1>Milos Academy</h1>
+        <p>Create your account</p>
+    </div>
+    <div class="auth-body">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="d-grid gap-2 mt-4">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-person-plus me-2"></i>Create Account
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="auth-footer">
+        <p class="mb-0">Already have an account? <a href="{% url 'account:login' %}">Sign in here</a></p>
+    </div>
+</div>
 {% endblock %}

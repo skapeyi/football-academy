@@ -1,14 +1,19 @@
 <div class="modal fade" id="assignPlayer" tabindex="-1" aria-labelledby="assignPlayerModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header bg-secondary text-white">
-                <h5>Assign player</h5>
+            <div class="modal-header">
+                <h5 class="modal-title">Assign Player</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="POST"  action="{% url 'account:care-takers-assign-player' %}">
+                <form method="POST" action="{% url 'account:care-takers-assign-player' %}">
                     {% csrf_token %}
                     {{ assign_player.as_p }}
-                    <button type="submit" class="btn btn-primary w-100">Assign</button>
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-person-plus me-2"></i>Assign Player
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

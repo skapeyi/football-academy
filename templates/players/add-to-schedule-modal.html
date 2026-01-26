@@ -1,14 +1,19 @@
 <div class="modal fade" id="addPlayerToSchedule" tabindex="-1" aria-labelledby="assignPlayerModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header bg-secondary text-white">
-                <h5>Register</h5>
+            <div class="modal-header">
+                <h5 class="modal-title">Register for Training</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="POST"  action="{% url 'account:player-schedule-register' %}">
+                <form method="POST" action="{% url 'account:player-schedule-register' %}">
                     {% csrf_token %}
                     {{ assign_schedule.as_p }}
-                    <button type="submit" class="btn btn-primary w-100">Register</button>
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-calendar-check me-2"></i>Register
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

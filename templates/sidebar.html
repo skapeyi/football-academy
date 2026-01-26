@@ -1,10 +1,10 @@
 <!-- Collapsible sidebar with icon mode for tablets -->
 <nav class="sidebar" id="sidebar">
-    <div class="card shadow-sm rounded-3">
-        <div class="card-header bg-secondary text-white text-center d-flex justify-content-between align-items-center">
-            <span class="sidebar-title">
-                <i class="bi bi-list"></i>
-                <span class="sidebar-text">Menu</span>
+    <div class="card">
+        <div class="card-header text-white d-flex justify-content-between align-items-center">
+            <span class="sidebar-title d-flex align-items-center">
+                <i class="bi bi-trophy-fill"></i>
+                <span class="sidebar-text">Milos Academy</span>
             </span>
             <!-- Toggle button for tablets (collapse to icons) -->
             <button class="btn btn-sm btn-outline-light d-none d-md-inline-block d-xl-none" type="button"
@@ -21,32 +21,32 @@
         <div class="card-body p-0">
             <div class="collapse d-md-block" id="sidebarMenu">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item" data-title="Home">
-                        <a class="nav-link d-flex align-items-center" href="{% url 'account:home' %}" title="Home">
-                            <i class="bi bi-house sidebar-icon"></i>
-                            <span class="sidebar-text">Home</span>
+                    <li class="list-group-item" data-title="Dashboard">
+                        <a class="nav-link d-flex align-items-center" href="{% url 'account:home' %}" title="Dashboard">
+                            <i class="bi bi-grid-1x2 sidebar-icon"></i>
+                            <span class="sidebar-text">Dashboard</span>
                         </a>
                     </li>
                     <li class="list-group-item" data-title="Players">
                         <a class="nav-link d-flex align-items-center" href="{% url 'account:players' %}" title="Players">
-                            <i class="bi bi-people sidebar-icon"></i>
+                            <i class="bi bi-people-fill sidebar-icon"></i>
                             <span class="sidebar-text">Players</span>
                         </a>
                     </li>
                     <li class="list-group-item" data-title="Scheduling">
                         <a class="nav-link d-flex align-items-center" href="{% url 'account:scheduling' %}" title="Scheduling">
-                            <i class="bi bi-calendar-event sidebar-icon"></i>
+                            <i class="bi bi-calendar3 sidebar-icon"></i>
                             <span class="sidebar-text">Scheduling</span>
                         </a>
                     </li>
                     <li class="list-group-item" data-title="Parents/Caretakers">
                         <a class="nav-link d-flex align-items-center" href="{% url 'account:care-takers' %}" title="Parents/Caretakers">
-                            <i class="bi bi-person-heart sidebar-icon"></i>
+                            <i class="bi bi-person-badge sidebar-icon"></i>
                             <span class="sidebar-text">Parents/Caretakers</span>
                         </a>
                     </li>
-                    <li class="list-group-item" data-title="Logout">
-                        <form action="{% url 'account:logout' %}" method="post" class="d-flex align-items-center m-0">
+                    <li class="list-group-item sidebar-logout" data-title="Logout">
+                        <form action="{% url 'account:logout' %}" method="post" class="d-flex align-items-center m-0 p-2">
                             {% csrf_token %}
                             <button class="btn btn-outline-danger btn-sm w-100 d-flex align-items-center justify-content-center"
                                 type="submit" title="Logout">
@@ -90,5 +90,15 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.setItem('sidebarCollapsed', collapsed);
         });
     }
+
+    // Highlight active nav item
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.sidebar .nav-link');
+    navLinks.forEach(function(link) {
+        if (link.getAttribute('href') === currentPath) {
+            link.classList.add('active');
+            link.closest('.list-group-item').classList.add('active');
+        }
+    });
 });
 </script>
