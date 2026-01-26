@@ -28,7 +28,7 @@ class RegisterView(View):
             user = User.objects.create_user(email=email, password=password)
             user.telephone = telephone
             user.save()
-            return redirect('login')
+            return redirect('account:login')
          return render(request, 'register.html', {'form': form})
       
 
@@ -47,7 +47,7 @@ class LoginView(View):
             user = authenticate(request, username=email, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('home')  # Redirect to home page after successful login
+                return redirect('account:home')  # Redirect to home page after successful login
             else:
                 form.add_error(None, "Invalid email or password.")
         return render(request, 'login.html', {'form': form})
@@ -60,7 +60,7 @@ class HomeView(LoginRequiredMixin, View):
 class LogoutView(View):
     def post(self, request):
         logout(request)
-        return redirect('login')
+        return redirect('account:login')
 
 # Players
 class ListPlayerView(LoginRequiredMixin, View):
